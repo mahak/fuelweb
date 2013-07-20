@@ -11,3 +11,4 @@ Development Documentation
    develop/nailgun
    develop/iso
    develop/alternatives
+   develop/api_doc
