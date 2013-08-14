@@ -39,7 +39,7 @@ from nailgun.api.handlers.base import HandlerRegistrator
 
 
 class NodeHandler(JSONHandler):
-    fields = ('id', 'name', 'meta', 'role', 'progress',
+    fields = ('id', 'name', 'meta', 'progress',
               'status', 'mac', 'fqdn', 'ip', 'manufacturer', 'platform_name',
               'pending_addition', 'pending_deletion', 'os_platform',
               'error_type', 'online', 'cluster')
@@ -54,6 +54,7 @@ class NodeHandler(JSONHandler):
             network_manager = NetworkManager()
             json_data['network_data'] = network_manager.get_node_networks(
                 instance.id)
+            json_data['roles'] = [r.name for r in instance.roles]
         except:
             logger.error(traceback.format_exc())
         return json_data
